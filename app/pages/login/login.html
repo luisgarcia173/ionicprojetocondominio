@@ -1,0 +1,39 @@
+
+<ion-content class="login">
+  <ion-card>
+    <ion-card-header>Digite o seu PIN</ion-card-header>
+    <ion-card-content>
+      <ion-row bottom>
+        <ion-col><div>{{quickcode[0]}}<ion-icon large [name]="passIcon[0]"></ion-icon></div></ion-col>
+        <ion-col><div>{{quickcode[1]}}<ion-icon [name]="passIcon[1]"></ion-icon></div></ion-col>
+        <ion-col><div>{{quickcode[2]}}<ion-icon [name]="passIcon[2]"></ion-icon></div></ion-col>
+        <ion-col><div>{{quickcode[3]}}<ion-icon [name]="passIcon[3]"></ion-icon></div></ion-col>
+        <ion-col><button dark outline small (click)="backspace()"><ion-icon name="md-arrow-round-back"></ion-icon></button></ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-row>
+        <ion-col><button dark round outline (click)="pressed(1)">1</button></ion-col>
+        <ion-col><button dark round outline (click)="pressed(2)">2</button></ion-col>
+        <ion-col><button dark round outline (click)="pressed(3)">3</button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><button dark round outline (click)="pressed(4)">4</button></ion-col>
+        <ion-col><button dark round outline (click)="pressed(5)">5</button></ion-col>
+        <ion-col><button dark round outline (click)="pressed(6)">6</button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><button dark round outline (click)="pressed(7)">7</button></ion-col>
+        <ion-col><button dark round outline (click)="pressed(8)">8</button></ion-col>
+        <ion-col><button dark round outline (click)="pressed(9)">9</button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><button dark round outline disabled>&nbsp;</button></ion-col>
+        <ion-col><button dark round outline (click)="pressed(0)">0</button></ion-col>
+        <ion-col><button dark round outline disabled>&nbsp;</button></ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

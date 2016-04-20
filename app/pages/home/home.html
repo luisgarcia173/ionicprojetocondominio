@@ -1,16 +1,6 @@
-<ion-navbar *navbar>
-  <ion-title>
-    Home
-  </ion-title>
-</ion-navbar>
-
-<ion-content class="home">
-  <ion-card>
-    <ion-card-header>
-      Card Header
-    </ion-card-header>
-    <ion-card-content>
-      Hello World
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+<ion-tabs>
+  <ion-tab [root]="tabHome" tabTitle="Home" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tabPeople" tabTitle="Cond&ocirc;minos" tabIcon="people"></ion-tab>
+  <ion-tab [root]="tabCash" tabTitle="Pagamentos" tabIcon="cash"></ion-tab>
+  <ion-tab [root]="tabCalendar" tabTitle="Calend&aacute;rio" tabIcon="calendar"></ion-tab>
+</ion-tabs>

@@ -1,0 +1,34 @@
+<ion-navbar *navbar light>
+  <ion-buttons start>
+	  <button menuToggle>
+	    <ion-icon name="settings"></ion-icon>
+	  </button>
+  </ion-buttons>
+  <ion-title>Pagamentos</ion-title>
+  <ion-buttons end>
+    <button>
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content class="pagamento">
+	<ion-item-group>
+    <ion-list-header>Cadastrados</ion-list-header>
+    <ion-item *ngFor="#p of pagamentos" (click)="itemTapped(p)">
+    	<ion-avatar item-left>
+        <ion-icon [name]="p.icon"></ion-icon>
+      </ion-avatar>
+      <h2><b>{{p.descricao}}</b></h2>
+      <h3>Valor do servi&ccedil;o {{p.valor | currency: 'BRL':true:'2.2'}}</h3>
+      <p>Frequ&ecirc;ncia: {{p.frequencia | uppercase}} ({{p.ultimo | date:'dd/MM/yyyy'}})</p>
+		</ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-list-header>Realizados</ion-list-header>
+    <ion-item *ngFor="#p of pagamentos">
+      <p><b>{{p.ultimo | date:'dd/MM/yyyy'}}</b> | {{p.descricao | uppercase}} ({{p.valor | currency: 'BRL':true:'2.2'}})</p>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

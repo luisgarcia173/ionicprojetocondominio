@@ -1,0 +1,42 @@
+<ion-toolbar>
+  <ion-title>
+    Pagamento
+  </ion-title>
+  <ion-buttons end>
+    <button (click)="dismiss()">
+      <span>Cancel</span>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content class="has-header components-demo">
+
+  <ion-list inset>
+  	<ion-item>
+  	    <ion-label floating>Descri&ccedil;&atilde;o</ion-label>
+  	    <ion-input type="text" [(ngModel)]="pagamento.descricao"></ion-input>
+  	</ion-item>
+    <ion-item>
+        <ion-label floating>Valor R$</ion-label>
+        <ion-input type="text" [(ngModel)]="pagamento.valor"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>&Iacute;cone</ion-label>
+        <ion-select [(ngModel)]="pagamento.icon" multiple="false">
+          <ion-option *ngFor="#i of icons">{{i}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Frequ&ecirc;ncia</ion-label>
+        <ion-select [(ngModel)]="pagamento.frequencia" multiple="false">
+          <ion-option *ngFor="#f of frequencies">{{f}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button block dark (click)="save()">Save</button>
+  </div>
+
+
+</ion-content>

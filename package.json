@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "angular2": "2.0.0-beta.13",
+    "enumify": "^1.0.4",
     "es6-promise": "3.0.2",
     "es6-shim": "^0.35.0",
     "ionic-angular": "2.0.0-beta.4",
@@ -22,7 +23,13 @@
     "run-sequence": "1.1.5"
   },
   "name": "meucondominio",
-  "description": "MeuCondominio: An Ionic project",
+  "description": "MeuCondominio: Controle gestao condominio",
+  "version": "1.0.0",
+  "private": "true",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/username/repository.git"
+  },
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
@@ -30,7 +37,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-x-toast"
+    "cordova-plugin-x-toast",
+    "cordova-sqlite-storage"
   ],
   "cordovaPlatforms": [
     "android"

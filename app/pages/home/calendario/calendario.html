@@ -1,10 +1,31 @@
 <ion-navbar *navbar light>
-  <button menuToggle>
-    <ion-icon name="settings"></ion-icon>
-  </button>
+  <ion-buttons start>
+	  <button menuToggle>
+	    <ion-icon name="settings"></ion-icon>
+	  </button>
+  </ion-buttons>
   <ion-title>Calend&aacute;rio</ion-title>
+  <ion-buttons end>
+    <button (click)="formTarefa()">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </ion-buttons>
 </ion-navbar>
 
-<ion-content padding>
-  
+<ion-content class="calendario">
+  <ion-item-group>
+    <ion-list-header>Semana: {{calendario.inicio}} - {{calendario.fim}}</ion-list-header>
+  	<ion-row *ngFor="#d of days; #i = index" (click)="itemTapped(p)" center>
+  		<ion-col width-20>
+  			<ion-row class="header"><ion-col>{{getWeekDay(datesInterval[i]) | uppercase}}</ion-col></ion-row>
+  			<ion-row class="content"><ion-col>{{d}}</ion-col></ion-row>
+  		</ion-col>
+  		<ion-col width-80>
+  			<ion-item *ngFor="#e of listarEventos(d)">
+				  <ion-label>{{e}}</ion-label>
+				  <ion-checkbox dark checked="false"></ion-checkbox>
+				</ion-item>
+  		</ion-col>
+  	</ion-row>
+  </ion-item-group>
 </ion-content>

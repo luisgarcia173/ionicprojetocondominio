@@ -12,7 +12,7 @@ export class Pagamento {
 	constructor() {}
 
 	static getIcons() {
-		return ['trash', 'cut', 'bug'];
+		return ['trash', 'cut', 'bug', 'analytics', 'aperture', 'apps', 'archive', 'beer'];
 	}
 
 	static getFrequencies() {

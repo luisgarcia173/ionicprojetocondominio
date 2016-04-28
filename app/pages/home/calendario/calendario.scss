@@ -1,0 +1,23 @@
+.calendario {
+  
+  ion-col[width-20] {
+
+    .header {
+			font-size: 10px;
+			background-color: #AA0000;
+			color: #fff;
+			font-weight: bold;
+			text-align: center;
+    }
+
+    .content {
+    	font-size: 30px;	
+    	//border: 1px solid #777777;
+    	border-left: 1px solid #777777;
+    	border-right: 1px solid #777777;
+    	border-bottom: 1px solid #777777;
+    	text-align: center;
+    }
+  }
+
+}

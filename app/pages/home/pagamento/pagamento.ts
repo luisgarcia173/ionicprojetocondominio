@@ -7,8 +7,8 @@ import {Pagamento} from './../../../models/pagamento/pagamento';
 })
 export class PagamentosPage {
 
-	private pagamentos: Pagamento[];
-	private pagamento: Pagamento;
+	public pagamentos: Pagamento[];
+	public pagamento: Pagamento;
 	private nav: NavController;
 	private platform: Platform;
 	private storage: Storage;
@@ -34,6 +34,7 @@ export class PagamentosPage {
     this.pagamento = new Pagamento();
 	}
 
+	//FIXME: move to Service layer
 	selectAllPayments() {
 		this.platform.ready().then(() => {
 			this.storage.query("SELECT * FROM pagamento").then((data) => {

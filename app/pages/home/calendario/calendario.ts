@@ -1,6 +1,10 @@
 import {Page} from 'ionic-angular';
 import {Calendario} from './../../../models/calendario/calendario';
 
+interface Dictionary {
+	[key: number]: string[];
+}
+
 @Page({
 	templateUrl: 'build/pages/home/calendario/calendario.html'
 })
@@ -9,8 +13,9 @@ export class CalendarioPage {
 	public calendario: Calendario;
 	public days: number[] = new Array();
 	public eventos: any;
-
 	public datesInterval: number[] = new Array();
+
+	private eventosRealizados: Dictionary;
 
 	constructor() {
 		this.calendario = new Calendario();
@@ -24,13 +29,17 @@ export class CalendarioPage {
 		};
 
 		this.eventos = Object.keys(this.calendario.eventos);
+		this.eventosRealizados = {
+			30: ['test1'],
+			 1: ['test5']
+		};
 		this.populateDaysWeek();
 	}
 
 	itemTapped() {
 	}
 
-	listarEventos(dia: number) {
+	listEvents(dia: number) {
 		var eventos = [];
 		for (var i = 0; i < this.eventos.length; i++) {
 			var key = this.eventos[i];
@@ -39,7 +48,65 @@ export class CalendarioPage {
 				break;
 			}
 		}
+		if (eventos.length < 1) {
+			eventos[0] = ' ';
+		}
 		return eventos;
+	}
+
+	checkEventDone(dia: any, evento: string) {
+		if (this.calendario.eventos.hasOwnProperty(dia) && this.eventosRealizados.hasOwnProperty(dia)) {
+			var eventos = this.calendario.eventos[dia];
+			var realizados = this.eventosRealizados[dia];
+			for (var i = 0; i < realizados.length; i++) {
+				for (var j = 0; j < eventos.length; j++) {
+					if (eventos[j] == realizados[i] && realizados[i] == evento) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	checkAsDone(dia: any, evento: string) {
+		// verifica dia existe
+		if (this.eventosRealizados.hasOwnProperty(dia)) {
+			// verifica evento existe para aquele dia
+			var realizados = this.eventosRealizados[dia];
+			var removed = false;
+			for (var i = 0; i < realizados.length; i++) {
+				// se existe evento, remove
+				if (realizados[i] == evento) {
+					realizados.splice(i, 1);
+					removed = true;
+					// atualiza array
+					this.eventosRealizados[dia] = realizados;
+				}
+			}
+			// se nao existe evento, adiciona
+			if (!removed) {
+				realizados.push(evento);
+				// atualiza array
+				this.eventosRealizados[dia] = realizados;
+			} else {
+				// verifica se existe mais algum evento para aquele dia, se nao remove lista
+				if (realizados.length == 0) {
+					delete this.eventosRealizados[dia];
+				}
+			}
+			
+		} else {
+			// adiciona nova chave com array
+			this.eventosRealizados[dia] = [evento];
+		}
+	}
+
+	getClassDone(dia: number, evento: string) {
+		if (this.checkEventDone(dia, evento)) {
+			return 'strike';	
+		}
+		return '';
 	}
 
 	getWeekDay(day: number) {

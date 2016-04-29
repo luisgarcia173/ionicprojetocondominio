@@ -15,15 +15,15 @@
 <ion-content class="calendario">
   <ion-item-group>
     <ion-list-header>Semana: {{calendario.inicio}} - {{calendario.fim}}</ion-list-header>
-  	<ion-row *ngFor="#d of days; #i = index" (click)="itemTapped(p)" center>
+  	<ion-row *ngFor="#d of days; #i = index" (click)="itemTapped(p)" top>
   		<ion-col width-20>
   			<ion-row class="header"><ion-col>{{getWeekDay(datesInterval[i]) | uppercase}}</ion-col></ion-row>
   			<ion-row class="content"><ion-col>{{d}}</ion-col></ion-row>
   		</ion-col>
   		<ion-col width-80>
-  			<ion-item *ngFor="#e of listarEventos(d)">
-				  <ion-label>{{e}}</ion-label>
-				  <ion-checkbox dark checked="false"></ion-checkbox>
+  			<ion-item *ngFor="#e of listEvents(d)">
+				  <ion-label [ngClass]="getClassDone(d,e)">{{e | uppercase}}</ion-label>
+				  <ion-checkbox blood checked="{{checkEventDone(d,e)}}" *ngIf="e !== ' '" (click)="checkAsDone(d,e)"></ion-checkbox>
 				</ion-item>
   		</ion-col>
   	</ion-row>
